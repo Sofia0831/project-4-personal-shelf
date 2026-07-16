@@ -7,3 +7,5 @@ Sofia Florylle Pantas: "Even if the ending has been predetermined, that's fine. 
 
 
 Daniel Ezra Rivera “If you only do what you can do, you will never be more than you are now.” -Master Shifu - (Kung Fu Panda)
+
+Rakotomamonjy Faharetana Andriatsiva "What is impossible with man is possible with God" - Luke 18:27
