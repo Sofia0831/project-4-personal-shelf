@@ -1,24 +1,38 @@
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
-import Footer from "./components/Footer";
-import HeaderNav from "./components/HeaderNav";
 
+import HeaderNav from "./components/HeaderNav";
+import Footer from "./components/Footer";
+import LandingPage from "./components/LandingPage";
+import Dashboard from "./components/Dashboard";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLogin = () => setIsLoggedIn(true);
+  const handleLogout = () => setIsLoggedIn(false);
+
   return (
-    <div>
-      <HeaderNav />
-      <main className="landing-page">
-        <section className="hero-card" aria-labelledby="page-title">
-          <p className="eyebrow">MediaVault</p>
-          <h1 id="page-title">Hello World</h1>
-          <p className="intro">
-            Welcome to MediaVault, a simple place to organize and manage your
-            media collection.
-          </p>
-        </section>
-      </main>
-      <Footer/>
-    </div>
+    <Router>
+      <div className="app-layout">
+        <HeaderNav isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+        
+        <Routes>
+          <Route 
+            path="/" 
+            element={!isLoggedIn ? <LandingPage onLogin={handleLogin} /> : <Navigate to="/dashboard" />} 
+          />
+
+          <Route 
+            path="/dashboard" 
+            element={isLoggedIn ? <Dashboard /> : <Navigate to="/" />} 
+          />
+        </Routes>
+        
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
