@@ -1,7 +1,10 @@
 import React from "react";
 import "../App.css";
+import { useNavigate } from "react-router-dom";
 
-const LandingPage = ({ onLogin }) => {
+const LandingPage = () => {
+  const navigate = useNavigate();
+
   return (
     <main className="landing-page">
       <section className="hero-card" aria-labelledby="page-title">
@@ -12,8 +15,8 @@ const LandingPage = ({ onLogin }) => {
           media collection.
         </p>
         
-        <button className="action-btn" onClick={onLogin}>
-          Sign In
+        <button className="action-btn" onClick={() => navigate("/auth")}>
+          Get Started
         </button>
       </section>
     </main>

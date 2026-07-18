@@ -5,6 +5,7 @@ import "./App.css";
 import HeaderNav from "./components/HeaderNav";
 import Footer from "./components/Footer";
 import LandingPage from "./pages/LandingPage";
+import AuthPage from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 
 function App() {
@@ -15,18 +16,22 @@ function App() {
 
   return (
     <Router>
-      <div className="app-layout">
+      <div className="app-container">
         <HeaderNav isLoggedIn={isLoggedIn} onLogout={handleLogout} />
         
         <Routes>
           <Route 
             path="/" 
-            element={!isLoggedIn ? <LandingPage onLogin={handleLogin} /> : <Navigate to="/dashboard" />} 
+            element={!isLoggedIn ? <LandingPage /> : <Navigate to="/dashboard" replace />} 
           />
-
+          <Route 
+            path="/auth" 
+            element={!isLoggedIn ? <AuthPage onLogin={handleLogin} /> : <Navigate to="/dashboard" replace />} 
+          />
+          
           <Route 
             path="/dashboard" 
-            element={isLoggedIn ? <Dashboard /> : <Navigate to="/" />} 
+            element={isLoggedIn ? <Dashboard /> : <Navigate to="/auth" replace />} 
           />
         </Routes>
         
