@@ -1,0 +1,29 @@
+
+POST http://localhost:5050/auth/register
+Content-Type: application/json
+
+{
+    "username": "faith",
+    "email": "donto@faith.com",
+    "password": "password123"
+}
+
+###
+
+
+POST http://localhost:5050/auth/login
+Content-Type: application/json
+
+{
+    "email": "donto@faith.com",
+    "password": "password123"
+}
+
+###
+
+POST  http://localhost:5050/auth/logout
+
+###
+
+
+GET http://localhost:5050/auth/protected
